@@ -10,21 +10,25 @@ let over_half=false;
 hits_span.innerHTML = hits; 
 spins_span.innerHTML = spins;
 
-function Winner(element) { if (spins<2*hits&&hits<spins){
-    //wins=true;
-    over_half=true;
- } else { over_half=false
-     //wins=false
 
- }
+//Q1 as Function
+function Winner(element) { if (spins<2*hits&&hits<spins){
+    over_half=true;
+ } else { over_half=false}
  win_span.innerHTML=over_half
 }
 
+//on mouse event
 function changeClassName(element) {
-  
-    element.className = 'item rotate';
-    spins=spins+1; 
+    if(element.className=="item"){
+        spins=spins+1; 
+        element.className = 'item rotate';
+    }
     Winner(element)
+  
+    
+
+//Q1
    /* if (spins<2*hits&&hits<spins){
        //wins=true;
        over_half=true;
@@ -57,11 +61,25 @@ if ( hits_spins_ratio > 0 ) {
 else {
     progress = 'Get going!' ;
 }
+
+
+//onclick events
 function resetClassName(element) {
-    element.className = 'item';
-    hits=hits+=2;
+    if(element.className=="item rotate"){
+        hits=hits+=2; 
+        element.className = 'item';
+    }else{
+        changeClassName(element)
+    }
     Winner(element)
-    hits_span.innerHTML = hits; 
+
+    hits_span.innerHTML = hits;
     hit_spin_span.innerHTML=Number(hits/spins).toFixed(2)
 
+
+    //Old code reset class
+/* element.className = 'item';
+    hits=hits+=2;
+    Winner(element)
+    hits_span.innerHTML = hits; */
 }
