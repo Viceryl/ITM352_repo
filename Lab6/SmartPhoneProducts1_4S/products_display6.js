@@ -63,4 +63,5 @@ function resetClassName(element) {
     Winner(element)
     hits_span.innerHTML = hits; 
     hit_spin_span.innerHTML=Number(hits/spins).toFixed(2)
+
 }
