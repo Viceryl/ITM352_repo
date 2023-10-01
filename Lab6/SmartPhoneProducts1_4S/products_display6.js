@@ -10,17 +10,28 @@ let over_half=false;
 hits_span.innerHTML = hits; 
 spins_span.innerHTML = spins;
 
+function Winner(element) { if (spins<2*hits&&hits<spins){
+    //wins=true;
+    over_half=true;
+ } else { over_half=false
+     //wins=false
+
+ }
+ win_span.innerHTML=over_half
+}
+
 function changeClassName(element) {
   
     element.className = 'item rotate';
     spins=spins+1; 
-    if (spins<2*hits&&hits<spins){
+    Winner(element)
+   /* if (spins<2*hits&&hits<spins){
        //wins=true;
        over_half=true;
     } else { over_half=false
         //wins=false
 
-    }
+    }*/
      //win_span.innerHTML=wins;
      win_span.innerHTML=over_half
     spins_span.innerHTML = spins; 
@@ -49,6 +60,7 @@ else {
 function resetClassName(element) {
     element.className = 'item';
     hits=hits+=2;
+    Winner(element)
     hits_span.innerHTML = hits; 
     hit_spin_span.innerHTML=Number(hits/spins).toFixed(2)
 }
