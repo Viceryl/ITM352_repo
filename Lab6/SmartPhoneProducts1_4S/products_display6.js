@@ -52,6 +52,21 @@ function changeClassName(element){
     spins_span.innerHTML = spins; 
     hit_spin_span.innerHTML=Number(hits/spins).toFixed(2)
 
+    hits_spins_ratio = hits / spins;
+    if (hits_spins_ratio > 0) {
+        progress = 'On your way!';
+        
+        if (hits_spins_ratio >= 0.5 && hits < spins) {
+            progress = 'You win!';
+        }
+        else if (hits_spins_ratio >= 0.25) {
+            progress = 'Almost there!';
+        }
+    } else {
+        progress = 'Get going!';
+    }
+    win_span.innerHTML=progress;
+
 }
 
 
@@ -76,21 +91,7 @@ function resetClassName(element) {
 // -- Winning progress depends on hits/spins Q4
 
 
-/*let hits_spins_ratio= hits/spins
-let progress;
-if ( hits_spins_ratio>0) {
-    progress = 'On your way!';
-    if ( hits_spins_ratio >= 0.25 ) {
-         progress = 'Almost there!';
-        if ( hits_spins_ratio >= 0.5 ) {
-            if( hits < spins) { 
-                progress = 'You win!';
-            }
-        }
-    } 
-}
-else {progress = 'Get going!' ;}
-win_span.innerHTML=progress;*/
+/*
 
 let hits_spins_ratio= hits/spins
 let progress;
@@ -101,6 +102,22 @@ if ( hits_spins_ratio >= 0.5 &&hits < spins ) {
             else if (progress = 'Get going!')
     
     
-    win_span.innerHTML=progress;
+    win_span.innerHTML=progress;*/
+
+    // -- Winning progress depends on hits/spins
+hits_spins_ratio = hits / spins;
+if (hits_spins_ratio > 0) {
+    progress = 'On your way!';
+    
+    if (hits_spins_ratio >= 0.5 && hits < spins) {
+        progress = 'You win!';
+    }
+    else if (hits_spins_ratio >= 0.25) {
+        progress = 'Almost there!';
+    }
+} else {
+    progress = 'Get going!';
+}
+win_span.innerHTML=progress;
 
 }
