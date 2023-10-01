@@ -105,6 +105,8 @@ if ( hits_spins_ratio >= 0.5 &&hits < spins ) {
     win_span.innerHTML=progress;*/
 
     // -- Winning progress depends on hits/spins
+
+//Chatgpt code
 hits_spins_ratio = hits / spins;
 if (hits_spins_ratio > 0) {
     progress = 'On your way!';
