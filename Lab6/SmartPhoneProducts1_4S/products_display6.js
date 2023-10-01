@@ -1,5 +1,5 @@
 //declare and push to the DOM the store name at top and bottom
-const store_name="Sal";
+const store_name="Victor";
 top_title.innerHTML=(store_name + "'s Used Smart Phone Store");
 bottom_title.innerHTML=(store_name + "'s Used Smart Phone Store");
 
@@ -43,26 +43,6 @@ function changeClassName(element) {
 }
 
 
-
-// -- Winning progress depends on hits/spins
-let hits_spins_ratio = hits/spins;
-let progress
-if ( hits_spins_ratio > 0 ) {
-    progress = 'On your way!';
-    if ( hits_spins_ratio >= 0.25 ) {
-        let progress = 'Almost there!';
-        if ( hits_spins_ratio >= 0.5 ) {
-            if( hits < spins) { 
-                progress = 'You win!';
-            }
-        }
-    }
-}
-else {
-    progress = 'Get going!' ;
-}
-
-
 //onclick events
 function resetClassName(element) {
     if(element.className=="item rotate"){
@@ -83,3 +63,24 @@ function resetClassName(element) {
     Winner(element)
     hits_span.innerHTML = hits; */
 }
+
+
+
+// -- Winning progress depends on hits/spins Q4  
+let hits_spins_ratio = hits/spins;
+let progress
+if ( hits_spins_ratio > 0 ) {
+    progress = 'On your way!';
+    if ( hits_spins_ratio >= 0.25 ) {
+         progress = 'Almost there!';
+        if ( hits_spins_ratio >= 0.5 ) {
+            if( hits < spins) { 
+                progress = 'You win!';
+            }
+        }
+    }
+}
+else {
+    progress = 'Get going!' ;
+}
+win_span.innerHTML=progress;
