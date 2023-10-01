@@ -1,38 +1,14 @@
 1. Create directorynamed invoice1
+2. Craete table
+3. Declare all variables, sort by product
+4. Declare Exprice var; set Quant*Price = Extend Price
+- Declare SubTotal = sum total exprice
+- Set tax variable = 5.75% Subtotal; dislpay tax amount
+- declare Var.Grand total = tax + sub total
 
+- use sals table tempplate; isplay the item, quantity, price, extended price.
 
-Craete table
-- Declare all variables
-- Q*P = Ext P
-- Sub T = All price sum
-- Set tax variable
-
-
-Create a directory Invoice1 and add a file invoice.html.
-
-At the top of this file put a Javascript comment briefly describing what this file is. Use the /* ... */ to make a multi line comment.
-
-Under the comment form above, add a single line comment // Product Data then underneath define variables for just one product:
-     // Product 1
-     var item1 = 'Gillette Sensor 3 Razor';
-     var quantity1 = 2;
-     var price1 = 1.23;
-Copy this and paste it 4 times. Change the variable names item2, item3, ... and corresponding values.
-
-Add variables extended_price1, extended_price2, ... and corresponding expressions to compute the extended price for each product. Comment this section // Compute extended prices
-
-Add the products’ extended prices together to get an overall subtotal for the sale. Comment this section.
-
-Calculate sales tax using 5.75% as your tax rate and display the tax amount. Comment this section.
-
-Add together the subtotal and the tax amount to get a grand total. We won’t worry about shipping or other costs for now.
-
-Add HTML to display the basic table. Create a template for one product row. to display the item, quantity, price, extended price.
-
-You have two choices in generating the product rows:
-Option 1: Put the row template into a document.write() then string templates to fill in the product data in the row cells. Copy and paste this 4 times and change the variables as needed for each product line.
-
-Option 2: Add an id="invoiceTable" to the table. Remove the product row template. In its place use
+-Option 2: Add an id="invoiceTable" to the table. Remove the product row template. In its place use
 
     // item row 1
    var row = invoiceTable.insertRow();
@@ -40,13 +16,14 @@ Option 2: Add an id="invoiceTable" to the table. Remove the product row template
    row.insertCell().innerHTML = quantity1;
    row.insertCell().innerHTML = price1.toFixed(2);
    row.insertCell().innerHTML = extended_price1;
-Copy and paste this 4 times and adjust the variable names.
 
-In the Sub-total row, use document.write() inside the cell for the sub-total or set this cell id="subtotal_cell" and then set .innerHTML to the subtotal value. Don’t forget to add a $ sign.
+In the Sub-total row, set this cell id="subtotal_cell" and then set .innerHTML to the subtotal value. Don’t forget to add a $ sign.
 
 In the tax row, do the same as above. Use .toFixed(2) to format the tax to 2 decimals.
 
 In the Total row, do the same as above and use .toFixed(2) to format the grand total to 2 decimals. Display your grand total in bold print.
+
+
 
 HINT:
 Do not try to create the HTML table first. Start by simply printing each row in the table as an individual line. When you have everything calculating and printing correctly, add in the table tags.  (You could even try viewing the HTML for *this* page and copy the HTML table in the example above and then use it to change what you print in your print statement.)
