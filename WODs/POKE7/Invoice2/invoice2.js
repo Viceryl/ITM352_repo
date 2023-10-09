@@ -99,3 +99,5 @@ row = invoiceTable.insertRow();
    row.insertCell().innerHTML = quantity5;
    row.insertCell().innerHTML = price5.toFixed(2);
    row.insertCell().innerHTML = extendPrice5;
+
+   
