@@ -69,35 +69,34 @@ document.getElementById("total_cell").innerHTML="$"+total.toFixed(2);
  let row = invoiceTable.insertRow();
  row.insertCell().innerHTML = item1; 
  row.insertCell().innerHTML = quantity1;
- row.insertCell().innerHTML = price1.toFixed(2);
- row.insertCell().innerHTML = extendPrice1;
+ row.insertCell().innerHTML = "$"+price1.toFixed(2);
+ row.insertCell().innerHTML = "$"+extendPrice1;
 
   // item row 2
 row = invoiceTable.insertRow();
   row.insertCell().innerHTML = item2; 
   row.insertCell().innerHTML = quantity2;
-  row.insertCell().innerHTML = price2.toFixed(2);
-  row.insertCell().innerHTML = extendPrice2;
+  row.insertCell().innerHTML = "$"+price2.toFixed(2);
+  row.insertCell().innerHTML = "$"+extendPrice2;
 
    // item row 3
 row = invoiceTable.insertRow();
    row.insertCell().innerHTML = item3; 
    row.insertCell().innerHTML = quantity3;
-   row.insertCell().innerHTML = price3.toFixed(2);
-   row.insertCell().innerHTML = extendPrice3;
+   row.insertCell().innerHTML = "$"+price3.toFixed(2);
+   row.insertCell().innerHTML = "$"+extendPrice3;
 
     // item row 4
 row = invoiceTable.insertRow();
     row.insertCell().innerHTML = item4; 
     row.insertCell().innerHTML = quantity4;
-    row.insertCell().innerHTML = price4.toFixed(2);
-    row.insertCell().innerHTML = extendPrice4;
+    row.insertCell().innerHTML = "$"+price4.toFixed(2);
+    row.insertCell().innerHTML = "$"+extendPrice4;
 
      // item row 5
 row = invoiceTable.insertRow();
    row.insertCell().innerHTML = item5; 
    row.insertCell().innerHTML = quantity5;
-   row.insertCell().innerHTML = price5.toFixed(2);
-   row.insertCell().innerHTML = extendPrice5;
+   row.insertCell().innerHTML = "$"+price5.toFixed(2);
+   row.insertCell().innerHTML = "$"+extendPrice5;
 
-   
