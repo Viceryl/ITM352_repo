@@ -5,23 +5,23 @@
 
 // Product 1
 let item1 = 'Cat';
-let quantity1 = 2;
+let quantity1 =2;
 let price1 = 6;
 
 // Product 2
 let item2 = 'Dog';
-let quantity2 = 2;
+let quantity2 = 3;
 let price2 = 8;
 
 // Product 3
 let item3 = 'Tanuki';
-let quantity3 = 2;
-let price3 = 8;
+let quantity3 = 4;
+let price3 = 10;
 
 // Product 4
 let item4 = 'Fox';
 let quantity4 = 2;
-let price4 = 4;
+let price4 = 12;
 
 // Product 5
 let item5 = 'Bird';
