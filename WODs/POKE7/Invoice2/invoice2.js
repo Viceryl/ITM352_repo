@@ -1,5 +1,4 @@
 /*  you will create a sales receipt for a sale that contains at least five different products (with prices of your choosing). You must use expressions and variables to compute the various needed values dynamically. That is, do not “hard code” the computations. You should be able to change the variable values and the sales receipt will compute the correct values.
-
 */
 // Product Data
 
@@ -49,7 +48,7 @@ let tax=subtotal*0.0575;
 //Display tax
 document.getElementById("tax_cell").innerHTML="$"+tax.toFixed(2);
 
-//Determine Shipping
+//Determine Shipping 
 let shipping=0
 if (subtotal<50){shipping=2}
 if (50<=subtotal&&subtotal<100){shipping=5}
@@ -58,7 +57,7 @@ if (subtotal>100){shipping=subtotal*0.05}
 //Display Shipping
 document.getElementById("shipping_cell").innerHTML="$"+shipping.toFixed(2);
 
-//calc Grand total
+//calculate Grand total
 let total=tax+subtotal+shipping;
 
 //Display Grand total
