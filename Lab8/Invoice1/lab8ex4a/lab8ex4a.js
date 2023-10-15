@@ -35,6 +35,7 @@ for (let i=0; i< product_quantities.length; i++) {
 }
 document.write("</table>");
 
+
 //Lab8 4.1
 function addNewRow() {
     let table=document.querySelector('table');
@@ -53,3 +54,4 @@ document.addEventListener('DOMContentLoaded', function(){
     let table = document.querySelector('table');
     table.addEventListener('click', addNewRow);
 });
+

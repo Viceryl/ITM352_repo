@@ -35,6 +35,17 @@ for (let i=0; i< product_quantities.length; i++) {
 }
 document.write("</table>");
 
+
+
+
+//create button after table 8.4.2
+let deletebutton = document.createElement('button');
+deletebutton.textContent= 'Delete Last Row';
+deletebutton.addEventListener('click', deletelastrow);
+document.body.appendChild(deletebutton);
+
+
+
 //Lab8 4.1
 function addNewRow() {
     let table=document.querySelector('table');
@@ -53,3 +64,13 @@ document.addEventListener('DOMContentLoaded', function(){
     let table = document.querySelector('table');
     table.addEventListener('click', addNewRow);
 });
+
+
+//delete row fuction 8.4.2
+function deletelastrow() {
+    let table = document.querySelector('table');
+    let rowcount = table.rows.length; //gives row count for table
+    if (rowcount>1){
+        table.deleteRow(rowcount-1);//delete last row (-1 because computer count for 0)
+    }
+}
