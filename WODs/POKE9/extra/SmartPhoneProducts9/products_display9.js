@@ -1,4 +1,4 @@
-let name1 = "HTC";
+/*let name1 = "HTC";
 let price1 = 40.00;
 let image1 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg";
 
@@ -17,15 +17,57 @@ let image4 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.
 let name5 = "Blackberry";
 let price5 = 10.00;
 let image5 = "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg";
+*/
 
+let product1={
+    name: "HTC",
+    price: 40.00,
+    image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/HTC.jpg",
+    }
+    
+    let product2={
+        name: "Apple",
+        price: 40.00,
+        image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg",
+    }
+    
+    let product3={
+        name: "nokia",
+        price: 75.00,
+        image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg",
+    }
+    
+    let product4={
+        name: "samsung",
+        price: 35.00,
+        image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg",
+    }
+    
+    let product5={
+        name: "blackberry",
+        price: 10.00,
+        image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg",
+        }
 
-//POKE 8
+let products=[product1,product2,product3,product4,product5]
+/*
 for (let i=1; eval("typeof name"+i)!='undefined'; i++){
     document.querySelector('.main').innerHTML+=`
     <section class="item" onmouseover="changeClassName(this);" onclick="resetClassName(this); ">
 <h2>${eval('name'+i)}</h2>
 <p> ${eval('price'+i)}</p>
 <img src="${eval('image'+i)}"/>
+</section>
+    `
+}*/
+
+for (let i=0; i<products.length; i++){
+let product=products[i]
+    document.querySelector('.main').innerHTML+=`
+    <section class="item" onmouseover="changeClassName(this);" onclick="resetClassName(this); ">
+<h2>${product.name}</h2>
+<p> ${product.price}</p>
+<img src="${product.image}"/>
 </section>
     `
 }
