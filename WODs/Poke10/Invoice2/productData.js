@@ -1,7 +1,7 @@
 
 
 //let quantity=[2,2.5,"cat",-5,0]
-let quantity=[1,1,1,1,1]
+let quantity=[1,5,-1,1.4,0]
 
 let itemData=[
 {
