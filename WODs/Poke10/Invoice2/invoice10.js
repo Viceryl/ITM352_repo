@@ -189,5 +189,5 @@ document.getElementById("total_cell").innerHTML="$"+total.toFixed(2);
 }
 
 generateItemRows(); // Call the function to start processing.
-//Chat GPT end
+
 
