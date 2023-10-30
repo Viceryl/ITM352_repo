@@ -1,3 +1,4 @@
+
 function updateQuantityMessage(textbox){
     let qntmessage=document.getElementById('qty_textbox_message')
 
@@ -14,6 +15,8 @@ function updateQuantityMessage(textbox){
 
 function ValidateQuantity(quantity){
     let errorMessage = " ";
+
+    //switch to value if the case Parm is true
     switch (true){
         case isNaN(quantity):
         errorMessage= "Thats Not a number";
@@ -34,7 +37,21 @@ function ValidateQuantity(quantity){
             errorMessage=" ";//noerror
             break; 
     }
-return errorMessage;
+return errorMessage; // return value after processing switch statement
 
 }
 
+function displayPurchase() {
+let quantity=Number(document.getElementById('qty_textbox').value); //ID the number in Text box.; (getELID(find element named)-"qty_textbox"-from the "document (html page)" - ensure as number - set value to quantity variable
+
+let validationMessage = ValidateQuantity(quantity);  // Call upon "ValidateQuantity" Function and input value from "quantity" local variable - assign output to "validationMessage" varible
+
+//Depending on value from validationmessage/ process Ty or alert error
+if (validationMessage==" "){
+    let message = `Thank you for ordering ${quantity} things!`;
+    document.body.innerHTML=message;
+}else {
+    alert (validationMessage + ". please enter a positive quantity.")
+document.getElementById('qty_textbox').value=" ";
+}
+}
