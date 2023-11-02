@@ -28,7 +28,7 @@ h1, h2 {
 }
 
 /* Div children of body */
-body > div {
+body > form > #Storefront {
     border: 5px solid black;
     display: flex;
 }
