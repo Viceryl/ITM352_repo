@@ -1,15 +1,21 @@
 /* General */
 body {
-    width: 1000px;
+    width: 800px;
+
     margin: 0 auto;
 }
 
 /* Typography */
-h1, h2 {
+h1 {
     color: rgb(0, 0, 0);
     text-align: center;
     text-shadow: 1px 1px 10px #ffffff
 }
+
+h2, h3{
+  color:#ffffff;
+  text-shadow: 3px 3px 3px #000000;}
+
 
 /* Block Styling */
 .main {
@@ -17,9 +23,12 @@ h1, h2 {
     flex-flow: row wrap;
     justify-content: space-around;
     background: url("../../../../Images/phone_globe.jpeg") no-repeat 100% center;
+    background-size: cover;
     color: black;
     fill: rgb(72, 40, 0);
+    padding: 1%;
 }
+
 
 /* Styling the products display */
 .item img {

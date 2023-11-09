@@ -29,6 +29,8 @@ let product1={
         image: "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg",
         }
 
+
+// Start POKE12
 let products=[product1,product2,product3,product4,product5]
 
 for (let i=0; i<products.length; i++){
@@ -36,12 +38,11 @@ let product=products[i]
     document.querySelector('.main').innerHTML+=`
     <section class="item" onmouseover="changeClassName(this);" onclick="resetClassName(this); ">
 <h2>${product.name}</h2>
-<p> ${product.price}</p>
+<h3> $${product.price}</h3>
 <img src="${product.image}"/>
 <br>
 <h2>Amount Desired
-<label for="X${i}">Order</label></h2>
-<br>
+<label for="X${i}"> </label></h2>
     <input type="text" id="X${i}">
 </section>`
 }
@@ -59,8 +60,8 @@ function Formfill() {
 
 
 
-///aa
 
+  //Below unedited
 //declare and push to the DOM the store name at top and bottom
 const store_name="Victor";
 top_title.innerHTML=(store_name + "'s Used Smart Phone Store");

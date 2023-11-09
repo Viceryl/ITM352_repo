@@ -1,41 +1,34 @@
-import { itemData, /*quantity*/} from "./productData.js";
+//import Products data
+import { itemData} from "./productData.js";
 
-
-
-
-let params = (new URL(document.location)).searchParams;
+//Declare quantity array
 let quantity = []
-//
+
 // Function to parse URL parameters and store them in the 'quantity' array
 function parseURLParameters() {
-  let params = new URLSearchParams(window.location.search);
+  //let params = new URLSearchParams(window.location.search);
+  let params = (new URL(document.location)).searchParams;
 
   for (let i = 0; i < itemData.length; i++) {
     let paramName = `X${i}`;
-    //let paramValue = parseInt(params.get(paramName));
     let paramValue = parseFloat(params.get(paramName));
 
-    // Check if the parameter exists and is a valid number
-    //if (!isNaN(paramValue) && paramValue >= 0) {
+  //Checks if box is filled with a number value, Non-number values treated as 0.
       if(isNaN(paramValue)){
         paramValue=0
         quantity.push(paramValue);
       } else{
       quantity.push(paramValue);}
-    //} 
-    /*else {
-      quantity.push(0); // Set a default value if the parameter is missing or invalid
-    }*/
   }
 }
 
 // Call the function to parse URL parameters and populate the 'quantity' array
 parseURLParameters();
 
+//Below unedited from previos labs
+
 // Now you can use the 'quantity' array to populate your table
 generateItemRows();
-
-//
 
 // Validation function to check quantity
 function ValidationQ(quantity) {
@@ -48,7 +41,7 @@ function ValidationQ(quantity) {
   } else if (!Number.isInteger(quantity)) {
     return "Non-integer";
   } else {
-    return " "; // no errors
+    return " "; // no errors 
   }
 }
 
