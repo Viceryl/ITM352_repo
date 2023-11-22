@@ -4,7 +4,6 @@
 let params=(new URL(document.location)).searchParams;
 let q =Number(params.get('quantity'));
 let error=params.get('error');
-
 //if there is an error alert the user
 if (error) {
     alert(error);

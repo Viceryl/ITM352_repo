@@ -1,6 +1,6 @@
 //orderMulti.js (LAB12,6)
 
-
+ 
 window.onload = function () {
 
 ///Check URl for error parameters and diplay/use them
@@ -39,6 +39,7 @@ function checkQuantityTextbox(theTextbox) {
    let errs = ValidationQ(theTextbox.value, true);
     document.getElementById(theTextbox.name + '_message').innerHTML = errs;
 }
+
 
 //add the validateQuantity() Function
 function ValidationQ(quantity) {

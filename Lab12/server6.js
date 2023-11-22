@@ -22,6 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
+
+
 app.post("/process_form", function (request, response) {
   let receipt = '';
   let qtys = request.body[`quantity_textbox`];
