@@ -1,3 +1,77 @@
+
+const express = require('express');
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+
+
+// modified for extra credit 2 to push error message with login prompts
+app.get("/login", function (request, response) {
+    // Give a simple login form
+    str = `
+        <script>
+            let params = (new URL(document.location)).searchParams;
+            window.onload = function() {
+                if (params.has('error')) {
+                    login_form['username'].value = params.get('username');
+                    document.getElementById("errMsg").innerHTML = params.get("error");
+                }
+            }
+        </script>
+
+        <body>
+        <div id="errMsg"></div>
+        <form action="" method="POST" name="login_form">
+        <input type="text" name="username" size="40" placeholder="enter username" ><br />
+        <input type="password" name="password" size="40" placeholder="enter password"><br />
+        <input type="submit" value="Submit" id="submit">
+        </form>
+        </body>
+    `;
+    response.send(str);
+});
+
+app.post("/login", function (request, response) {
+    // Process login form POST and redirect to logged in page if ok, back to login page if not
+    // Retrieve the user's entered information
+    let username_entered = request.body['username'];
+    let password_entered = request.body['password'];
+
+    let response_msg = "";
+    let errors = false;
+
+    let params = new URLSearchParams(request.body);
+
+    // Check if the username exists in user_reg_data
+    if (typeof user_reg_data[username_entered] != 'undefined') {
+        // Check if the password matches with the username
+        if (password_entered == user_reg_data[username_entered].password) {
+            response_msg = `${username_entered} is logged in.`;
+        } else {
+            response_msg = `Incorrect password.`;
+            errors = true;
+        }
+    } else {
+        response_msg = `${username_entered} does not exist.`;
+        errors = true;
+    }
+
+    if (!errors) {
+        response.send(response_msg);
+    } else {
+        response.redirect(`./login?error=${response_msg}&${params.toString()}`)
+    }
+
+});
+
+app.listen(8080, () => console.log(`listening on port 8080`));
+
+
+
 const fs = require('fs');
 //This line imports the Node.js built-in fs (file system) module, which provides methods for interacting with the file system, including reading and writing files.
 
@@ -39,7 +113,7 @@ fs.writeFileSync(filename, JSON.stringify(user_reg_data), 'utf-8');
 //JSON.stringify(user_reg_data) is used to convert the JavaScript object user_reg_data into a JSON-formatted string before writing it to the file.
 
 let express = require('express');
-let app = express();
+//let app = express();
 
 app.use(express.urlencoded({ extended: true }));
 

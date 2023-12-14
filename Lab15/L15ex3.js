@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 
@@ -6,6 +5,11 @@ app.use(express.urlencoded({ extended: true }));
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
+
+const session = require('express-session');
+
+app.use(session({secret: "MySecretKey", resave: true, saveUninitialized: true}));
+
 
 app.get('/set_cookie', (req,res)=>{
     res.cookie('username', 'sal', {maxAge: 5000});
@@ -17,29 +21,44 @@ app.get('/use_cookie', (req,res)=>{
     res.send(`welcome to the use cookie page ${username}`);
 })
 
+app.get('/use_session', (req,res)=>{
+    res.send(`welcome your session ID is ${req.session.id}`)
+})
 
-
-
-
-
-
-
-// modified for extra credit 2 to push error message with login prompts
-app.get("/login", function (request, response) {
+app.get("/login", function (request, response) { // modified for extra credit 2 to push error message with login prompts
     // Give a simple login form
-    str = `
+    const login_form = `
         <script>
+
+            function getCookieValue(cookieName){
+                let cookies = document.cookie.split(';');//split entire cookie string by ;
+                for(let i =0;i<cookies.length;i++){
+                    let cookiePair=cookies[i].trim().split('=');//Split eaach individual cookie into key and value
+                    if(cookiePair[0] === cookieName){
+                        return cookiePair[1]; // returns the value if the nme matches
+                    }
+                }
+                return null;//Return null if cookie is not found
+            }
+
             let params = (new URL(document.location)).searchParams;
             window.onload = function() {
                 if (params.has('error')) {
                     login_form['username'].value = params.get('username');
                     document.getElementById("errMsg").innerHTML = params.get("error");
                 }
+
+                let cookie_username=getCookieValue('username');
+                if (cookie_username){
+                    document.getElementById("welcomeUser").innerHTML= 'Welcome back '+cookie_username+'!';
+
             }
+        }
         </script>
 
         <body>
         <div id="errMsg"></div>
+        <div id="welcomeUser"></div>
         <form action="" method="POST" name="login_form">
         <input type="text" name="username" size="40" placeholder="enter username" ><br />
         <input type="password" name="password" size="40" placeholder="enter password"><br />
@@ -47,7 +66,7 @@ app.get("/login", function (request, response) {
         </form>
         </body>
     `;
-    response.send(str);
+    response.send(login_form);
 });
 
 app.post("/login", function (request, response) {
@@ -65,8 +84,20 @@ app.post("/login", function (request, response) {
     if (typeof user_reg_data[username_entered] != 'undefined') {
         // Check if the password matches with the username
         if (password_entered == user_reg_data[username_entered].password) {
-            response_msg = `${username_entered} is logged in.`;
-        } else {
+        
+      response.cookie('username', `${username_entered}`);
+      console.log('login cookie has been sent')
+      
+                const userSession=request.session
+                if(!userSession.lastlogin){
+                    userSession.lastlogin="First Visit!!"
+                }else{
+                    userSession.lastlogin=new Date().toLocaleString();
+                }
+                
+                response_msg = `${username_entered} is logged in. Last login: ${userSession.lastlogin}`;
+
+        }else {
             response_msg = `Incorrect password.`;
             errors = true;
         }
@@ -139,6 +170,8 @@ app.get("/register", function (request, response) {
                     reg_form['username'].value = params.get('username');
                     reg_form['email'].value = params.get('email');
                     reg_form['name'].value = params.get('name');
+                }
+
                 }
             }
         </script>

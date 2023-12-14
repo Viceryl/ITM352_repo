@@ -1,4 +1,3 @@
-
 const express = require('express');
 const app = express();
 
@@ -6,6 +5,11 @@ app.use(express.urlencoded({ extended: true }));
 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
+
+const session = require('express-session');
+
+app.use(session({secret: "MySecretKey", resave: true, saveUninitialized: true}));
+
 
 app.get('/set_cookie', (req,res)=>{
     res.cookie('username', 'sal', {maxAge: 5000});
@@ -17,15 +21,11 @@ app.get('/use_cookie', (req,res)=>{
     res.send(`welcome to the use cookie page ${username}`);
 })
 
+app.get('/use_session', (req,res)=>{
+    res.send(`welcome your session ID is ${req.session.id}`)
+})
 
-
-
-
-
-
-
-// modified for extra credit 2 to push error message with login prompts
-app.get("/login", function (request, response) {
+app.get("/login", function (request, response) { // modified for extra credit 2 to push error message with login prompts
     // Give a simple login form
     str = `
         <script>
@@ -65,8 +65,17 @@ app.post("/login", function (request, response) {
     if (typeof user_reg_data[username_entered] != 'undefined') {
         // Check if the password matches with the username
         if (password_entered == user_reg_data[username_entered].password) {
-            response_msg = `${username_entered} is logged in.`;
-        } else {
+        
+                const userSession=request.session
+                if(!userSession.lastlogin){
+                    userSession.lastlogin="First Visit!!"
+                }else{
+                    userSession.lastlogin=new Date().toLocaleString();
+                }
+                
+                response_msg = `${username_entered} is logged in. Last login: ${userSession.lastlogin}`;
+
+        }else {
             response_msg = `Incorrect password.`;
             errors = true;
         }
